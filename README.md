@@ -8,7 +8,7 @@ By [@eoinmcg](https://twitter.com/eoinmcg)
 
 ### Background:
 
-Intergalatic space pirates have invaded over your spaceship. 
+Intergalactic space pirates have invaded over your spaceship. 
 All crew members are in deep sleep. Which means that you a humble, FlipBot 2000,
 must save the day! Are you up to the challenge?
 
