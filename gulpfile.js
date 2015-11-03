@@ -9,9 +9,10 @@ var fs = require('fs'),
     webserver = require('gulp-webserver'),
     uglify = require('gulp-uglify'),
     unzip = require('gulp-unzip'),
-    zip = require('gulp-zip');
-
+    zip = require('gulp-zip'),
+    exclude_min = ['js/lib/jsfxr.min.js'],
     config = { js: [] };
+
 
 gulp.task('build', ['initbuild', 'jsmin', 'addjs', 'zip', 'unzip', 'clean', 'report']);
 
@@ -29,7 +30,7 @@ gulp.task('serve', function() {
 
 gulp.task('initbuild', function() {
 
-  var stream, html, $, js = [];
+  var stream, html, $, src, js = [];
  
   // delete prev files
   stream = gulp.src('game.zip')
@@ -50,11 +51,13 @@ gulp.task('initbuild', function() {
   $ = cheerio.load(html);
 
   $('script').each(function() {
-    js.push($(this).attr('src'));
+    src = $(this).attr('src');
+    if (exclude_min.indexOf(src) === -1) {
+      js.push(src);
+    }
   });
 
   config.js = js;
-  console.log(js);
 
 });
 
@@ -62,7 +65,7 @@ gulp.task('jsmin', ['initbuild'], function() {
 
   var stream = gulp.src(config.js)
     .pipe(concat('g.js'))
-    // .pipe(uglify())
+    .pipe(uglify())
     .pipe(gulp.dest('.'));
 
   return stream;
@@ -75,10 +78,20 @@ gulp.task('addjs', ['jsmin'], function() {
       return data;
     });
 
+    var i, tmp, extra_js = '';
+
+    for (i = 0; i < exclude_min.length; i += 1) {
+      console.log(exclude_min[i])
+      extra_js += fs.readFileSync(exclude_min[i], 'utf-8', function(e, data) {
+        return data;
+      });
+    }
+    console.log(extra_js.length, 'OK', exclude_min);
+
     var stream = gulp.src('dev.html')
       .pipe(replace(/<.*?script.*?>.*?<\/.*?script.*?>/igm, ''))
-      .pipe(replace(/<\/body>/igm, '<script>'+js+'</script></body>'))
-      // .pipe(htmlmin({collapseWhitespace: true}))
+      .pipe(replace(/<\/body>/igm, '<script>'+extra_js+' '+js+'</script></body>'))
+      .pipe(htmlmin({collapseWhitespace: true}))
       .pipe(rename('index.html'))
       .pipe(gulp.dest('./tmp'));
 
