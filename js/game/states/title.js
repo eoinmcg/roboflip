@@ -20,6 +20,17 @@ $.Title = $.State.extend({
     this.bg = new $.BgTitle(g, { speed: 500, numStars: 0 });
 
     this.hideText = false;
+
+    window.addEventListener('click', function() {
+      $.H.fullScreen(g.c);
+    }, false);
+    window.addEventListener('keydown', function() {
+      $.H.fullScreen(g.c);
+    }, false);
+    window.addEventListener('touchstart', function() {
+      $.H.fullScreen(g.c);
+    }, false);
+
   },
 
 
