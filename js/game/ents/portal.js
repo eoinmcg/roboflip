@@ -36,22 +36,13 @@ $.Portal = $.Sprite.extend({
   },
 
   doDamage: function(o) {
-    var g = this.g,
-        s = this;
+    var g = this.g;
     if (o.group === 'player') {
       this.active = true;
-      this.col = $.cols.pigmeat;
+      g.bonus = {
+        x: this.x, y: this.y
+      };
 
-        g.addEvent({
-          time: 0.001,
-          cb: function() {
-            g.score += 100;
-            g.ents.push(new $.Msg(g, {
-              text: 'BONUS',
-              x: s.x, y: s.y
-            }));
-          }
-        });
     }
   }
 

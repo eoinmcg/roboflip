@@ -171,6 +171,15 @@ $.Play = $.State.extend({
       }, dir: -1 }));
     }}));
 
+    if (g.bonus) {
+        g.score += 100;
+        g.ents.push(new $.Msg(g, {
+          text: 'BONUS',
+          x: g.bonus.x, y: g.bonus.y
+        }));
+        g.bonus = false;
+    }
+
   },
 
 
