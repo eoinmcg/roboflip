@@ -53,6 +53,11 @@ $.H = {
     } else if(el.msRequestFullscreen) {
       el.msRequestFullscreen();
     }
+
+    window.removeEventListener('click', $.fullScreen);
+    window.removeEventListener('keydown', $.fullScreen);
+    window.removeEventListener('touchstart', $.fullScreen);
+
   },
 
 

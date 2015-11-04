@@ -21,15 +21,6 @@ $.Title = $.State.extend({
 
     this.hideText = false;
 
-    window.addEventListener('click', function() {
-      $.H.fullScreen(g.c);
-    }, false);
-    window.addEventListener('keydown', function() {
-      $.H.fullScreen(g.c);
-    }, false);
-    window.addEventListener('touchstart', function() {
-      $.H.fullScreen(g.c);
-    }, false);
 
   },
 
