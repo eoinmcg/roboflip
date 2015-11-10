@@ -3,7 +3,7 @@
   "description": "Intergalactic space pirates have invaded over your spaceship. All crew members are in deep sleep. Which means that you a humble, FlipBot 2000, must save the day! Are you up to the challenge?",
   "launch_path": "/roboflip/index.html",
   "icons": {
-    "512": "/roboflip/icon512.png",
+    "512": "/roboflip/icon512x512.png",
     "128": "/roboflip/icon128x128.png",
     "60": "/roboflip/icon60x60.png"
   },
