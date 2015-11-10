@@ -81,12 +81,12 @@ gulp.task('addjs', ['jsmin'], function() {
     var i, tmp, extra_js = '';
 
     for (i = 0; i < exclude_min.length; i += 1) {
-      console.log(exclude_min[i])
+      // console.log(exclude_min[i])
       extra_js += fs.readFileSync(exclude_min[i], 'utf-8', function(e, data) {
         return data;
       });
     }
-    console.log(extra_js.length, 'OK', exclude_min);
+    // console.log(extra_js.length, 'OK', exclude_min);
 
     var stream = gulp.src('dev.html')
       .pipe(replace(/<.*?script.*?>.*?<\/.*?script.*?>/igm, ''))
