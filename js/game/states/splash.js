@@ -49,7 +49,9 @@ $.Splash = $.State.extend({
       g.draw.text('EOINMCG PRESENTS', this.p, false, 100);
 
     g.ctx.globalAlpha = this.fade / 10;
-    g.ctx.drawImage(this.skull, 220, 150);
+    try {
+      g.ctx.drawImage(this.skull, 220, 150);
+    } catch (e) {}
     g.ctx.globalAlpha = 1;
 
     s._super();
