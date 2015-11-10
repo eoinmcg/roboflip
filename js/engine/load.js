@@ -11,8 +11,6 @@ $.Load = function(g) {
             append = 'data:image/gif;base64,',
             i = $.data.i, n;
 
-        // g.draw.rect(0, 0, g.w, g.h, $.cols.nightblue);
-
         for (n in i) {
             if (i.hasOwnProperty(n)) {
                 g.imgs[n] = new Image();
@@ -30,14 +28,11 @@ $.Load = function(g) {
             p;
         this.imgsLoaded += 1;
 
-        // p = (s.imgsLoaded / s.imgsTotal) * g.w;
-
-        // g.draw.rect(0, 150, p, 50, $.cols.slimegreen);
 
         if (s.imgsLoaded === s.imgsTotal) {
           window.setTimeout(function() {
             s.mkFonts();
-          }, 10);
+          }, 750);
         }
 
     };
