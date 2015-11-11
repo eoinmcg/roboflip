@@ -11,7 +11,7 @@ $.Splash = $.State.extend({
     this.skull = g.draw.scale(g.imgs.skull_w, 6);
 
     $.fullScreen = function() {
-      $.H.fullScreen(g.c);
+      // $.H.fullScreen(g.c);
     };
 
     window.addEventListener('click', $.fullScreen);
