@@ -1,10 +1,13 @@
-# FLIPBOT
+# RoboFlip
 
 ## Entry for the 2015 js13kgames.com competition
 
 By [@eoinmcg](https://twitter.com/eoinmcg)
 
+[Play](http://eoinmcg.github.io/roboflip/)
+
 ![Screenshot](https://github.com/eoinmcg/roboflip/raw/master/splash.png)
+
 
 ### Background:
 
