@@ -10,6 +10,7 @@ var fs = require('fs'),
     uglify = require('gulp-uglify'),
     unzip = require('gulp-unzip'),
     zip = require('gulp-zip'),
+    argv = require('yargs').argv,
     exclude_min = ['js/lib/jsfxr.min.js'],
     config = { js: [] };
 
@@ -143,23 +144,18 @@ gulp.task('report', ['clean'], function() {
 
 
 gulp.task('encode', function()  {
-  var files = fs.readdirSync('./a'),
-      gifs = [],
-      n, parts, base64;
 
-  for ( n in files) {
-    if (files[n].indexOf('.gif') !== -1) {
-      gifs.push(files[n]);
-    }
+  var img = argv.img;
+
+  if (!img) {
+    console.log('USAGE: gulp encode --img=<IMG>');
+    return;
   }
 
-  for (n = 0; n < gifs.length; n += 1) {
-
-    fs.readFileSync('.a/'+gifs[n], function(err, data) {
-     console.log(err, data);
-    });
-    parts = gifs[n].split('.'); 
-    console.log(parts[0], gifs[n], base64);
-  }
-
+  fs.readFile(img, function(err, original_data){
+      var base64Image = original_data.toString('base64');
+      var append = 'data:image/gif;base64,';
+      console.log(append+base64Image);
+  });
+  
 });
