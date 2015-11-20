@@ -10,13 +10,15 @@ $.Splash = $.State.extend({
     this.fade = 0;
     this.skull = g.draw.scale(g.imgs.skull_w, 6);
 
-    $.fullScreen = function() {
-      // $.H.fullScreen(g.c);
-    };
 
-    window.addEventListener('click', $.fullScreen);
-    window.addEventListener('keydown', $.fullScreen);
-    window.addEventListener('touchstart', $.fullScreen);
+    var fs = document.getElementById('fs');
+    fs.style.display = 'block';
+    fs.addEventListener('click', function(){
+        $.H.toggleFullScreen();
+    });
+
+     
+
 
   },
 

@@ -52,6 +52,8 @@ $.State = Class.extend({
 
 
     this.fader = Math.sin(g.tick * 3) + 1;
+    g.input.pos.x = 0;
+    g.input.pos.y = 0;
 
   },
 

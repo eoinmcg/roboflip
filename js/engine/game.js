@@ -38,7 +38,6 @@ $.Game = function() {
         ua = navigator.userAgent.toLowerCase();
 
 
-    g.mobile =  'createTouch' in document || false;
 		g.mobile = 'createTouch' in document || false;
     g.android = ua.indexOf('android') > -1;
     g.ios = /ipad|iphone|ipod/.test(ua);
@@ -73,6 +72,7 @@ $.Game = function() {
 
     g.shake = new $.Shake(g);
     g.changeState(g.startState);
+    $.H.mkFavicon(g.draw.scale(g.imgs.icon, 4));
 
 		function gameLoop() {
 			g.loop();

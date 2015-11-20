@@ -13,13 +13,10 @@ $.Title = $.State.extend({
     this.p = g.mkFont('w', 2);
 
 
-    if (g.plays === 0) {
-      g.audio.say($.data.title);
-    }
-
     this.bg = new $.BgTitle(g, { speed: 500, numStars: 0 });
 
     this.hideText = false;
+
 
 
   },

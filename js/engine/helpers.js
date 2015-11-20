@@ -42,22 +42,50 @@ $.H = {
   //   return (Math.atan2(dy, dx));
   // },
 
+    toggleFullScreen: function() {
 
-  fullScreen: function(el) {
-    if(el.requestFullscreen) {
-      el.requestFullscreen();
-    } else if(el.mozRequestFullScreen) {
-      el.mozRequestFullScreen();
-    } else if(el.webkitRequestFullscreen) {
-      el.webkitRequestFullscreen();
-    } else if(el.msRequestFullscreen) {
-      el.msRequestFullscreen();
+      var d = document;
+
+       if (!d.fullscreenElement &&    // alternative standard method
+        !d.mozFullScreenElement && !d.webkitFullscreenElement) {  // current working methods
+         if (d.documentElement.requestFullscreen) {
+           d.documentElement.requestFullscreen();
+         } else if (d.documentElement.mozRequestFullScreen) {
+           d.documentElement.mozRequestFullScreen();
+         } else if (d.documentElement.webkitRequestFullscreen) {
+           d.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+         }
+          fs.className = '';
+       } else {
+          if (d.cancelFullScreen) {
+             d.cancelFullScreen();
+          } else if (d.mozCancelFullScreen) {
+             d.mozCancelFullScreen();
+          } else if (d.webkitCancelFullScreen) {
+            d.webkitCancelFullScreen();
+          }
+       }
+    },
+
+
+  mkFavicon: function(i) {
+
+    var canvas = document.createElement('canvas');
+    canvas.width = 32; canvas.height = 32;
+    var ctx = canvas.getContext('2d');
+
+    try {
+        ctx.drawImage(i, 0, 0);
+    } catch (e) {
+        // window.location.href=window.location.href;
+        return;
     }
 
-    window.removeEventListener('click', $.fullScreen);
-    window.removeEventListener('keydown', $.fullScreen);
-    window.removeEventListener('touchstart', $.fullScreen);
-
+    var l = document.createElement('link');
+    l.type = 'image/x-icon';
+    l.rel = 'shortcut icon';
+    l.href = canvas.toDataURL("image/x-icon");
+    document.getElementsByTagName('head')[0].appendChild(l);
   },
 
 

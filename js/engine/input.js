@@ -12,8 +12,14 @@ $.Input = function() {
     s.touching = 0;
     s.touchLeft = 0;
     s.touchRight = 0;
+    s.pos = {
+      x: 0, y: 0
+    };
 
 
+		l('mousedown', function(e) {
+      s.trackTouch([e]);
+		});
 
 		l('touchstart', function(e) {
       s.touching = 1;
@@ -52,6 +58,10 @@ $.Input = function() {
 
 		s.touchLeft = 0;
 		s.touchRight = 0;
+
+    s.pos.x = ~~((touches[0].pageX - offsetX) / scale);
+    s.pos.y = ~~((touches[0].pageY - offsetY) / scale);
+
 
 		for (i = 0; i < touches.length; i += 1) {
 			if (i > 1) { break; }

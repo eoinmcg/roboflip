@@ -4,13 +4,18 @@
 <head>
 <title>Loading</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>body{margin:0;padding:0;background:#222;font-family:"Lucida Console",Courier,monospace;color:#a3ce27;-webkit-touch-callout:none; -webkit-user-select:none;-moz-user-select:none;user-select:none;} canvas {background:#000;display:block;margin:0;display:none;cursor:none;}h1{margin:auto;position:absolute;top:50%;width:100%;text-align:center;transform: translate3d(0,0,0); }#l{ font-size: 150%;}</style>
+<style>body{margin:0;padding:0;background:#222;font-family:"Lucida Console",Courier,monospace;color:#a3ce27;-webkit-touch-callout:none; -webkit-user-select:none;-moz-user-select:none;user-select:none;} canvas {background:#000;display:block;margin:0;display:none;}h1{margin:auto;position:absolute;top:50%;width:100%;text-align:center;transform: translate3d(0,0,0); }#l{ font-size: 150%;}
+#fs { display: none; position: absolute; width: 20px; height: 20px;  background: url(data:image/gif;base64,R0lGODdhCAAIAIABAAAAAP///ywAAAAACAAIAAACDYQTdsjL+aKE0TWFVAEAOw==) center center no-repeat; background-size: cover;top: 20px; right: 20px; image-rendering: optimizeSpeed; image-rendering: pixelated;image-rendering: -moz-crisp-edges; border: 1px solid #fff; }
+#fs:hover { cursor: pointer; border-color: #eb8931; }
+</style>
 
 </head>
 <body>
 
 <div id="l"><h1 id="h">Loading</h1></div>
+<div id="fs"></div>
 <canvas id="b"></canvas>
+
 
 <script src="js/lib/jsfxr.min.js"></script>
 
